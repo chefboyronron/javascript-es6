@@ -83,3 +83,36 @@ for ( let key in members ) {
 container.forEach(function(f){
     f();
 });
+
+// different of let, var, const
+var x = 'Hello';
+let y = 'World';
+const z = 'Earth';
+
+console.log(x); // output : Hello
+console.log(y); // output : World
+console.log(z); // output : Earth
+
+// call as a global variable
+// you cannot assign let and global as a global variable
+console.log(window.x); // output : Hello
+console.log(window.y); // output : undefined
+console.log(window.z); // output : undefined
+
+// exercise
+// display 1-10
+var numbers = [];
+var k = '';
+for ( let r = 1; r <= 10; r++ ) {
+    numbers.push(
+        function(value){
+            return function(){
+                k += value;
+            }
+        }(r)
+    );
+}
+numbers.forEach(function(f){
+    f();
+});
+console.log(k);
